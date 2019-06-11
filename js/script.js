@@ -42,7 +42,8 @@ var quotes = [
 console.log(quotes);
 
 
-/*****created a getRandomQuote function to test the random results of each quote to display on the screen, once the quote box is pressed. */
+/*****created a getRandomQuote function to test the random results of each quote to 
+ * display on the screen, once the quote box is pressed. */
   function getRandomQuote() {
   var quoteIndex = Math.floor(Math.random() * quotes.length);
   for (var i = 0; i < quotes.length; i++) {
@@ -54,21 +55,37 @@ console.log(quotes);
 
   console.log(result);
 
-/****created a printQuote function to be able to print each quote after the quote box is pressed and determines if a citation and/or year is included. */
+/****created a printQuote function to be able to print each quote after the quote box is
+ * pressed and determines if a citation and/or year is included. */
   function printQuote() {
     var htmlString = ' ';
     var actualQuote = getRandomQuote(); 
     htmlString  = "<p class ='quote'>" + actualQuote.quote + "</p>";
     htmlString += "<p class ='source'>" + actualQuote.source + "</p>";
   if(actualQuote.citation) {
-      htmlString += "<span class = 'citation'>" + actualQuote.citation + "</span>";
+    htmlString += "<span class = 'citation'>" + actualQuote.citation + "</span>";
     }
   if(actualQuote.year) {
     htmlString += "<span class = 'year'>" + actualQuote.year + "</span>";
     }
+
     htmlString += "</p>";
     document.getElementById('quote-box').innerHTML = htmlString;
   }
+  
+  function random_bg_color() {
+    var red = Math.floor(Math.random() * 256);
+    var green = Math.floor(Math.random() * 256);
+    var blue = Math.floor(Math.random() * 256);
+    var bgColor = "rgb(" + red + "," + green + "," + blue + ")";
+
+  console.log(bgColor);
+    
+  document.body.style.background = bgColor;
+  }
+  
+  random_bg_color();
+  
 
  
 /***
@@ -79,5 +96,4 @@ comment.
 ***/
 
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
-
-
+document.getElementById('loadQuote').addEventListener("click", random_bg_color, false);
