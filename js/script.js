@@ -28,7 +28,8 @@ var quotes = [
 
   {
   quote: 'The only limit to the height of your achievements is the reach of your dreams and your willingness to work hard for the.', 
-  source: 'Michelle Obama'
+  source: 'Michelle Obama',
+  category: 'Urban'
   },
 
   {
@@ -58,17 +59,19 @@ console.log(quotes);
 /****created a printQuote function to be able to print each quote after the quote box is
  * pressed and determines if a citation and/or year is included. */
   function printQuote() {
+    random_bg_color();
     var htmlString = ' ';
     var actualQuote = getRandomQuote(); 
     htmlString  = "<p class ='quote'>" + actualQuote.quote + "</p>";
     htmlString += "<p class ='source'>" + actualQuote.source + "</p>";
   if(actualQuote.citation) {
     htmlString += "<span class = 'citation'>" + actualQuote.citation + "</span>";
+  if(actualQuote.category) {
+      htmlString += "<span class = 'category'>" + actualQuote.category + "</span>";  
     }
   if(actualQuote.year) {
     htmlString += "<span class = 'year'>" + actualQuote.year + "</span>";
     }
-
     htmlString += "</p>";
     document.getElementById('quote-box').innerHTML = htmlString;
   }
@@ -80,14 +83,11 @@ console.log(quotes);
     var bgColor = "rgb(" + red + "," + green + "," + blue + ")";
 
   console.log(bgColor);
-    
   document.body.style.background = bgColor;
   }
   
-  random_bg_color();
-  
+  setInterval(function(){ printQuote(); }, 3000); 
 
- 
 /***
 When the "Show another quote" button is clicked, the event listener 
 below will be triggered, and it will call, or "invoke", the `printQuote` 
