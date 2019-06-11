@@ -46,37 +46,35 @@ console.log(quotes);
 /*****created a getRandomQuote function to test the random results of each quote to display on the screen. */
   function getRandomQuote() {
   var quoteIndex = Math.floor(Math.random() * quotes.length);
-  for (var i = 0; i < quotes.length; i++) {
-    var randomQuote = quotes[quoteIndex];
+     var randomQuote = quotes[quoteIndex];
   }
+
   return randomQuote;
-  } 
-  var result = getRandomQuote(quotes);
+    var result = getRandomQuote(quotes);
 
   console.log(result);
 
- /****created a printQuote function to be able to run each quote evey 25 seconds and changes background color. */
+ /****created a printQuote function to be able to run each quote and changes the background color. */
   function printQuote() {
     random_bg_color();
-    var htmlString = ' ';
+    var htmlString = '';
     var actualQuote = getRandomQuote(); 
     htmlString  = "<p class ='quote'>" + actualQuote.quote + "</p>";
-    htmlString += "<p class ='source'>" + actualQuote.source + "</p>";
-  if(actualQuote.citation) {
-    htmlString += "<span class = 'citation'>" + actualQuote.citation + "</span>";
+    htmlString += "<p class ='source'>" + actualQuote.source;
+    if(actualQuote.citation) {
+      htmlString += "<span class = 'citation'>" + actualQuote.citation + "</span>";
     }
-    {
-  if(actualQuote.category) {
-    htmlString += "<span class = 'category'>" + actualQuote.category + "</span>";
+    if(actualQuote.category) {
+      htmlString += "<span class = 'category'>" + actualQuote.category + "</span>";
     }
-    }
-  if(actualQuote.year) {
-    htmlString += "<span class = 'year'>" + actualQuote.year + "</span>";
+    if(actualQuote.year) {
+      htmlString += "<span class = 'year'>" + actualQuote.year + "</span>";
     }
     htmlString += "</p>";
     document.getElementById('quote-box').innerHTML = htmlString;
   }
   
+/****created a random background function to change the color when the quote changes. */ 
   function random_bg_color() {
     var red = Math.floor(Math.random() * 256);
     var green = Math.floor(Math.random() * 256);
@@ -87,7 +85,8 @@ console.log(quotes);
   document.body.style.background = bgColor;
   }
   
+/****created a setInterval to allow the quotes to changes after 25 seconds. */ 
   setInterval(function(){ printQuote(); }, 25000); 
 
+/****the document is going to find the element by id to load the quote after the click. */
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
-document.getElementById('loadQuote').addEventListener("click", random_bg_color, false);
