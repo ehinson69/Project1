@@ -43,8 +43,7 @@ var quotes = [
 console.log(quotes);
 
 
-/*****created a getRandomQuote function to test the random results of each quote to 
- * display on the screen, once the quote box is pressed. */
+/*****created a getRandomQuote function to test the random results of each quote to display on the screen. */
   function getRandomQuote() {
   var quoteIndex = Math.floor(Math.random() * quotes.length);
   for (var i = 0; i < quotes.length; i++) {
@@ -56,8 +55,7 @@ console.log(quotes);
 
   console.log(result);
 
-/****created a printQuote function to be able to print each quote after the quote box is
- * pressed and determines if a citation and/or year is included. */
+ /****created a printQuote function to be able to run each quote evey 25 seconds and changes background color. */
   function printQuote() {
     random_bg_color();
     var htmlString = ' ';
@@ -66,8 +64,11 @@ console.log(quotes);
     htmlString += "<p class ='source'>" + actualQuote.source + "</p>";
   if(actualQuote.citation) {
     htmlString += "<span class = 'citation'>" + actualQuote.citation + "</span>";
+    }
+    {
   if(actualQuote.category) {
-      htmlString += "<span class = 'category'>" + actualQuote.category + "</span>";  
+    htmlString += "<span class = 'category'>" + actualQuote.category + "</span>";
+    }
     }
   if(actualQuote.year) {
     htmlString += "<span class = 'year'>" + actualQuote.year + "</span>";
@@ -86,14 +87,7 @@ console.log(quotes);
   document.body.style.background = bgColor;
   }
   
-  setInterval(function(){ printQuote(); }, 3000); 
-
-/***
-When the "Show another quote" button is clicked, the event listener 
-below will be triggered, and it will call, or "invoke", the `printQuote` 
-function. So do not make any changes to the line of code below this 
-comment.
-***/
+  setInterval(function(){ printQuote(); }, 25000); 
 
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 document.getElementById('loadQuote').addEventListener("click", random_bg_color, false);
