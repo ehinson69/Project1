@@ -60,8 +60,12 @@ console.log(quotes);
     var actualQuote = getRandomQuote(); 
     htmlString  = "<p class ='quote'>" + actualQuote.quote + "</p>";
     htmlString += "<p class ='source'>" + actualQuote.source + "</p>";
-    htmlString += "<span class = 'citation'>" + actualQuote.citation + "</span>";
+    if(response = citation){
+      htmlString += "<span class = 'citation'>" + actualQuote.citation + "</span>";
+    }
+   if(response = year){
     htmlString += "<span class = 'year'>" + actualQuote.year + "</span>";
+    }
     htmlString += '</p>';
     document.getElementById('quote-box').innerHTML = htmlString;
   }
