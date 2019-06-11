@@ -54,7 +54,7 @@ console.log(quotes);
 
   console.log(result);
 
-/****created a printQuote function to be able to print each quote after the quote box is pressed. */
+/****created a printQuote function to be able to print each quote after the quote box is pressed and determines if a citation and/or year is included. */
   function printQuote() {
     var htmlString = ' ';
     var actualQuote = getRandomQuote(); 
