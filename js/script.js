@@ -43,7 +43,7 @@ console.log(quotes);
 
 /*****created a getRandomQuote function to pass the quotes array as an argument and store result of function in variable, then loop over the array using a for loop.*/
   function getRandomQuote(array) {
-    var quoteIndex = Math.floor(Math.random() * quotes.length);
+    var quoteIndex = Math.floor(Math.random() * array.length);
     for(var i = 0; i < array.length; i++) {
       var randomQuote = array[quoteIndex];
     }
@@ -57,7 +57,7 @@ console.log(quotes);
   function printQuote() {
     random_bg_color();
     var htmlString = '';
-    var actualQuote = getRandomQuote(); 
+    var actualQuote = getRandomQuote(quotes); 
     htmlString  = "<p class ='quote'>" + actualQuote.quote + "</p>";
     htmlString += "<p class ='source'>" + actualQuote.source;
     if(actualQuote.citation) {
