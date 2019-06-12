@@ -7,7 +7,6 @@ by Elizabeth Hinson
 
 /***** created my quotes function and added five random famous quotes and included the console.log to be sure it prints out in the console for review. */
 var quotes = [
-    
   {
   quote: 'The way to get started is to quit talking and begin doing',
   source: 'Walt Disney', 
@@ -39,22 +38,22 @@ var quotes = [
   year: 2006
   }
 ];
-
 console.log(quotes);
 
 
-/*****created a getRandomQuote function to test the random results of each quote to display on the screen. */
-  function getRandomQuote() {
-  var quoteIndex = Math.floor(Math.random() * quotes.length);
-     var randomQuote = quotes[quoteIndex];
-  }
-
-  return randomQuote;
-    var result = getRandomQuote(quotes);
-
+/*****created a getRandomQuote function to pass the quotes array as an argument and store result of function in variable, then loop over the array using a for loop.*/
+  function getRandomQuote(array) {
+    var quoteIndex = Math.floor(Math.random() * quotes.length);
+    for(var i = 0; i < array.length; i++) {
+      var randomQuote = array[quoteIndex];
+    }
+    return randomQuote;
+  }  
+  var result = getRandomQuote(quotes);
   console.log(result);
-
- /****created a printQuote function to be able to run each quote and changes the background color. */
+ 
+  
+  /****created a printQuote function to be able to run each quote and changes the background color. */
   function printQuote() {
     random_bg_color();
     var htmlString = '';
@@ -88,5 +87,5 @@ console.log(quotes);
 /****created a setInterval to allow the quotes to changes after 25 seconds. */ 
   setInterval(function(){ printQuote(); }, 25000); 
 
-/****the document is going to find the element by id to load the quote after the click. */
+/****event listener is to respond to "Show another quote" button clicks, so when user clicks the button, the printQuote function is called. */
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
